@@ -1,5 +1,4 @@
 # PictureMusicDemo-object
-##PictureMusicDemo-object
 这个demo有两个功能
 
 * 搜索图片
