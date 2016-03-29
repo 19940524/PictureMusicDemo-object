@@ -27,6 +27,7 @@
 		CEBA798C1CAA54540020995F /* LCYImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBA79831CAA54540020995F /* LCYImageCell.m */; };
 		CEBA798F1CAA54540020995F /* ParallaxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBA79891CAA54540020995F /* ParallaxCell.m */; };
 		CEBA79931CAA561E0020995F /* ListenMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBA79921CAA561E0020995F /* ListenMusicViewController.m */; };
+		CEE93B671CAA73A7000D0AFC /* DemoImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93B661CAA73A7000D0AFC /* DemoImage1.png */; };
 		E3F4A18BBAE5FC7149CD8511 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D029B147B78DC6263A3662FB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		CEBA79891CAA54540020995F /* ParallaxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParallaxCell.m; sourceTree = "<group>"; };
 		CEBA79911CAA561E0020995F /* ListenMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenMusicViewController.h; sourceTree = "<group>"; };
 		CEBA79921CAA561E0020995F /* ListenMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenMusicViewController.m; sourceTree = "<group>"; };
+		CEE93B661CAA73A7000D0AFC /* DemoImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DemoImage1.png; sourceTree = "<group>"; };
 		D029B147B78DC6263A3662FB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -180,6 +182,7 @@
 				CE4FBF111C992A1600CE3C33 /* main.m */,
 				CE4FBF211C992A1600CE3C33 /* Info.plist */,
 				CE4093101C9A792200592AAD /* mh_bg.jpg */,
+				CEE93B661CAA73A7000D0AFC /* DemoImage1.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE4FBF201C992A1600CE3C33 /* LaunchScreen.storyboard in Resources */,
+				CEE93B671CAA73A7000D0AFC /* DemoImage1.png in Resources */,
 				CE4FBF1D1C992A1600CE3C33 /* Assets.xcassets in Resources */,
 				CE4FBF1B1C992A1600CE3C33 /* Main.storyboard in Resources */,
 				CE4093111C9A792200592AAD /* mh_bg.jpg in Resources */,
