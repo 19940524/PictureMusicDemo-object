@@ -30,6 +30,7 @@
 		CEE93B6B1CAA809A000D0AFC /* DemoImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93B681CAA809A000D0AFC /* DemoImage1.png */; };
 		CEE93B6C1CAA809A000D0AFC /* DemoImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93B691CAA809A000D0AFC /* DemoImage2.png */; };
 		CEE93B6D1CAA809A000D0AFC /* DemoImage3.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93B6A1CAA809A000D0AFC /* DemoImage3.png */; };
+		CEE93B731CAA9CE2000D0AFC /* DemoGIF1.gif in Resources */ = {isa = PBXBuildFile; fileRef = CEE93B721CAA9CE2000D0AFC /* DemoGIF1.gif */; };
 		E3F4A18BBAE5FC7149CD8511 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D029B147B78DC6263A3662FB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		CEE93B681CAA809A000D0AFC /* DemoImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DemoImage1.png; sourceTree = "<group>"; };
 		CEE93B691CAA809A000D0AFC /* DemoImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DemoImage2.png; sourceTree = "<group>"; };
 		CEE93B6A1CAA809A000D0AFC /* DemoImage3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DemoImage3.png; sourceTree = "<group>"; };
+		CEE93B721CAA9CE2000D0AFC /* DemoGIF1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DemoGIF1.gif; sourceTree = "<group>"; };
 		D029B147B78DC6263A3662FB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 				CEE93B681CAA809A000D0AFC /* DemoImage1.png */,
 				CEE93B691CAA809A000D0AFC /* DemoImage2.png */,
 				CEE93B6A1CAA809A000D0AFC /* DemoImage3.png */,
+				CEE93B721CAA9CE2000D0AFC /* DemoGIF1.gif */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				CEE93B6B1CAA809A000D0AFC /* DemoImage1.png in Resources */,
 				CEE93B6D1CAA809A000D0AFC /* DemoImage3.png in Resources */,
 				CE4FBF1D1C992A1600CE3C33 /* Assets.xcassets in Resources */,
+				CEE93B731CAA9CE2000D0AFC /* DemoGIF1.gif in Resources */,
 				CE4FBF1B1C992A1600CE3C33 /* Main.storyboard in Resources */,
 				CE4093111C9A792200592AAD /* mh_bg.jpg in Resources */,
 				CEE93B6C1CAA809A000D0AFC /* DemoImage2.png in Resources */,
