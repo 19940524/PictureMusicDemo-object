@@ -12,4 +12,6 @@
 请求网络图片,优化tableview显示image滑动的流畅度
 
 ##效果图
-<!--![image](https://raw.githubusercontent.com/19940524/PictureMusicDemo-object/master/Object/DemoImage1.png)-->
+![image](https://raw.githubusercontent.com/19940524/PictureMusicDemo-object/master/Object/DemoImage1.png)
+![image](https://raw.githubusercontent.com/19940524/PictureMusicDemo-object/master/Object/DemoImage2.png)
+![image](https://raw.githubusercontent.com/19940524/PictureMusicDemo-object/master/Object/DemoImage3.png)
