@@ -89,7 +89,7 @@
     _bgTaskId = [self backgroundPlayerID:_bgTaskId];
     
     [SDWebImageManager.sharedManager.imageCache calculateSizeWithCompletionBlock:^(NSUInteger fileCount, NSUInteger totalSize) {
-        //        NSLog(@"fileCount = %d    totalSize = %d",fileCount, totalSize);
+        //        NSLog(@"fileCount = %d    totalSize = %d",fileCount, totalSize);` 
         if (fileCount > 200) {
             [[[SDWebImageManager sharedManager] imageCache] clearDisk];
         }
