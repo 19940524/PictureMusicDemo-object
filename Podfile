@@ -1,0 +1,7 @@
+platform:ios,'8.0'
+pod 'SDWebImage'
+pod 'AFNetworking', '2.6.0'
+pod 'NSDictionary+Accessors'
+pod 'MJRefresh', '~> 3.0.1'
+pod 'MJExtension', '~> 3.0.7'
+pod 'Masonry', '~> 0.6.3'

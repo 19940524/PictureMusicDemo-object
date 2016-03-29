@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
+#import "Thread.h"
+#import "PlayMusicViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,8 +19,44 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
     return YES;
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent {
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        //        NSLog(@"subtype = %ld",(long)receivedEvent.subtype);
+        
+        //        NSLog(@"vc = %@",[[Thread sharedThred] playMusicVC]);
+        
+        PlayMusicViewController *vc = [[Thread sharedThred] playMusicVC];
+        
+        switch (receivedEvent.subtype) {
+                
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                break;
+                
+            case UIEventSubtypeRemoteControlPreviousTrack:  // 上一曲
+                [vc.delegate inASongIsNext:NO];
+                break;
+                
+            case UIEventSubtypeRemoteControlNextTrack: // 下一曲
+                [vc.delegate inASongIsNext:YES];
+                break;
+                
+            case UIEventSubtypeRemoteControlPlay: case UIEventSubtypeRemoteControlPause:
+                [vc playPause:vc.playOrStopButton];
+                break;
+                
+                //            case UIEventSubtypeRemoteControlPause:  // 暂停
+                //                //                [self playAndStopSong:self.playButton];
+                //                [vc playPause:vc.playOrStopButton];
+                //                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
