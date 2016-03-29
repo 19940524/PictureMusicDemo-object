@@ -64,7 +64,7 @@
 - (void)initData {
     isAllowPerform = YES;
     songArray = [NSMutableArray array];
-    // 15629250  16578651  14821571  15133321 14312718 14575364 13942356 14332917 14383435 14437857
+    
     //    NSString *url = @"http://tingapi.ting.baidu.com/v1/restserver/ting?from=webapp_music&method=baidu.ting.song.getRecommandSongList&format=json&callback=&song_id=13844864&num=10";
     NSString *url = @"http://tingapi.ting.baidu.com/v1/restserver/ting?from=webapp_music&method=baidu.ting.billboard.billList&type=21&size=30&offset=0";
     [self requestMusic:url];
@@ -516,13 +516,11 @@
                     [self changeBackProgress:[NSNumber numberWithFloat:dur]];
                     
                     if ((float)dur >= 1) {
-                        NSLog(@"dur = %.0f  ---> %f",dur,self.currPlayModel.duration.floatValue);
+                        //                        NSLog(@"dur = %.0f  ---> %f",dur,self.currPlayModel.duration.floatValue);
                         [self inASongIsNext:YES];
                         return;
                     }
                     NSString *key = [NSString stringWithFormat:@"%.1f",CMTimeGetSeconds([self.myPlayer currentTime])];
-//                    NSLog(@"key = %@",key);
-                    //                    NSNumber *durationTime = [NSNumber numberWithFloat:key.floatValue / self.currPlayModel.duration.floatValue];
                     
                     if ([self.keyList containsObject:key]) {
                         
@@ -534,10 +532,6 @@
                             
                             NSNotification *notification = [NSNotification notificationWithName:@"scrolCell" object:nil userInfo:@{@"indexPath":indexPath}];
                             [[NSNotificationCenter defaultCenter] postNotification:notification];
-                        } else  {
-                            //                            [self changeBackProgress:[NSNumber numberWithFloat:1]];
-                            NSLog(@"11111");
-                            
                         }
                     }
                     

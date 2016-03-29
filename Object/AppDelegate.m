@@ -25,9 +25,6 @@
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent {
     if (receivedEvent.type == UIEventTypeRemoteControl) {
-        //        NSLog(@"subtype = %ld",(long)receivedEvent.subtype);
-        
-        //        NSLog(@"vc = %@",[[Thread sharedThred] playMusicVC]);
         
         PlayMusicViewController *vc = [[Thread sharedThred] playMusicVC];
         
@@ -47,11 +44,6 @@
             case UIEventSubtypeRemoteControlPlay: case UIEventSubtypeRemoteControlPause:
                 [vc playPause:vc.playOrStopButton];
                 break;
-                
-                //            case UIEventSubtypeRemoteControlPause:  // 暂停
-                //                //                [self playAndStopSong:self.playButton];
-                //                [vc playPause:vc.playOrStopButton];
-                //                break;
                 
             default:
                 break;
