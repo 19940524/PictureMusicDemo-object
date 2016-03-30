@@ -224,10 +224,8 @@
         return;
     }
     
-    if (_timerSource) {
-        [self resetData];
-    }
     
+    [self resetData];
     
     self.playMusicVC = [self initplayMusicVCMusicReplace:YES];
     
@@ -240,7 +238,9 @@
             weakSelf.playMusicVC.lrcList = weakSelf.lrcList;
             weakSelf.playMusicVC.keyList = weakSelf.keyList;
             [weakSelf.playMusicVC.myTableView reloadData];
+            
             [ServerEventHandler playSong:model.song_id callback:^(SongModel *songModel) {
+                //                [weakSelf resetData];
                 [weakSelf initPlayer:songModel picImage:cell.parallaxImage.image songId:model.song_id];
                 [weakSelf.myPlayer play];
             }];
@@ -283,9 +283,13 @@
 
 #pragma mark - 重置播放器和定时器于数据
 - (void)resetData {
-    dispatch_source_cancel(_timerSource);
-    [self.myPlayer removeObserver:self forKeyPath:@"status"];
-    self.myPlayer = nil;
+    if (_timerSource) {
+        dispatch_source_cancel(_timerSource);
+    }
+    if (self.myPlayer) {
+        [self.myPlayer removeObserver:self forKeyPath:@"status"];
+        self.myPlayer = nil;
+    }
     _th.scrolToIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
 }
 
@@ -321,8 +325,6 @@
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
         RecommandSongModel *recommandModel = [self objectForRow:indexPath.row];
         
-        [self.playMusicVC.picImage sd_setImageWithURL:[NSURL URLWithString:recommandModel.pic_big] placeholderImage:nil options:SDWebImageHandleCookies completed:nil];
-        
         [ServerEventHandler requestSongLrc:recommandModel.song_id success:^(NSDictionary *dataDic) {
             
             NSDictionary *lrcDictionary = [self getLrc:[dataDic objectForKey:@"lrcContent"]];
@@ -343,12 +345,13 @@
         }];
         
         [ServerEventHandler playSong:recommandModel.song_id callback:^(SongModel *songModel) {
+            [self.playMusicVC.picImage sd_setImageWithURL:[NSURL URLWithString:recommandModel.pic_big] placeholderImage:nil options:SDWebImageHandleCookies completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                [self initPlayer:songModel picImage:image songId:recommandModel.song_id];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.8f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.myPlayer play];
+                });
+            }];
             
-            [self initPlayer:songModel picImage:self.playMusicVC.picImage.image songId:recommandModel.song_id];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.8f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                NSLog(@"play = %@",self.myPlayer);
-                [self.myPlayer play];
-            });
         }];
         
         self.selectIndexPath = indexPath;
@@ -361,10 +364,10 @@
     self.currPlayModel.picImage = picImage;
     _th.thereIsMusicId = song_id;
     
+    [self configNowPlayingInfoCenter];
     self.myPlayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:songModel.link]];
     self.myPlayer.volume = 0.2f;
     [self.myPlayer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-    [self configNowPlayingInfoCenter];
 }
 
 #pragma mark - 解析歌词
@@ -499,6 +502,7 @@
             
             [UIView animateWithDuration:0.3f animations:^{
                 self.myPlayer.volume = 1;
+                [self configNowPlayingInfoCenter];
             }];
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -555,6 +559,8 @@
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self changeProgress:durationTime];
     });
+    
+    
     
     NSNotification *updateProgressNot = [NSNotification notificationWithName:@"updateProgressNot" object:nil userInfo:@{@"value" : durationTime}];
     [[NSNotificationCenter defaultCenter] postNotification:updateProgressNot];
@@ -627,6 +633,10 @@
         [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
         //注意这里，告诉系统已经准备好了
         [self becomeFirstResponder];
+    }
+    
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
 }
 
